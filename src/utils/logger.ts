@@ -12,6 +12,7 @@ const logger = pino({
         method: req.method,
         url: req.url,
         from: getRefererFrom(req.headers.referer),
+        userAgent: req.headers["user-agent"],
       };
     },
     res: (res) => {
@@ -61,7 +62,7 @@ const loggerMiddleware = pinoHttp({
   wrapSerializers: false,
   autoLogging: { ignore: (req: Request) => ignorePaths.includes(req.url) },
   customErrorMessage: function (_error, res) {
-    return "request xrrored with status code: " + res.statusCode;
+    return "request errored with status code: " + res.statusCode;
   },
   customSuccessMessage: function (req, res) {
     if (res.statusCode === 404) {
