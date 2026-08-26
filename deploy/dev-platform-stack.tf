@@ -25,7 +25,7 @@ resource "aws_cloudformation_stack" "cloudfront_stack" {
     EnableCustomErrorPages                                         = "true"
     FraudHeaderEnabled                                             = "true"
     FraudHeadersFunctionName                                       = "TICFFraudHeadersCloudFrontFunction"
-    LogDestination                                                 = "csls_cw_logs_destination_prodpython"
+    LogDestination                                                 = "LogGroupOnly"
     OriginCloakingHeader                                           = "none"
     OriginCloakingHeaderManagedSecretAlarmSNSTopicARN              = var.originCloakingHeaderManagedSecretAlarmSNSTopicARN
     OriginCloakingHeaderManagedSecretNotificationSNSTopicARN       = var.originCloakingHeaderManagedSecretNotificationSNSTopicARN
